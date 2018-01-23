@@ -95,7 +95,8 @@ public class NormalModeActivity extends AppCompatActivity {
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(redButton.getText().equals(String.valueOf(productRealPrice))){
+                String redButtonText = redButton.getText().toString().replace("€", "");
+                if(redButtonText.equals(String.valueOf(productRealPrice))){
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
@@ -111,7 +112,8 @@ public class NormalModeActivity extends AppCompatActivity {
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(blueButton.getText().equals(String.valueOf(productRealPrice))){
+                String blueButtonText = blueButton.getText().toString().replace("€", "");
+                if(blueButtonText.equals(String.valueOf(productRealPrice))){
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
@@ -126,7 +128,8 @@ public class NormalModeActivity extends AppCompatActivity {
         purpleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(purpleButton.getText().equals(String.valueOf(productRealPrice))){
+                String purpleButtonText = purpleButton.getText().toString().replace("€", "");
+                if(purpleButtonText.equals(String.valueOf(productRealPrice))){
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
@@ -140,7 +143,9 @@ public class NormalModeActivity extends AppCompatActivity {
         greenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(greenButton.getText().equals(String.valueOf(productRealPrice))){
+                String greenButtonText = greenButton.getText().toString().replace("€", "");
+                Log.d(TAG, "onClick: greenButtonText: "+ greenButtonText);
+                if(greenButtonText.equals(String.valueOf(productRealPrice))){
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
@@ -175,10 +180,10 @@ public class NormalModeActivity extends AppCompatActivity {
 
             Collections.shuffle(randomPrices);
 
-            blueButton.setText(String.valueOf(randomPrices.get(0)));
-            greenButton.setText(String.valueOf(randomPrices.get(1)));
-            purpleButton.setText(String.valueOf(randomPrices.get(2)));
-            redButton.setText(String.valueOf(randomPrices.get(3)));
+            blueButton.setText(String.valueOf(randomPrices.get(0))+"€");
+            greenButton.setText(String.valueOf(randomPrices.get(1))+"€");
+            purpleButton.setText(String.valueOf(randomPrices.get(2))+"€");
+            redButton.setText(String.valueOf(randomPrices.get(3))+"€");
 
             productName.setText(question.getProduct());
         }catch (Exception e){
