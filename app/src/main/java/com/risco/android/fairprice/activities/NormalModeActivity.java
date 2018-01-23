@@ -2,8 +2,10 @@ package com.risco.android.fairprice.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -20,6 +22,7 @@ import com.risco.android.fairprice.utils.FirebaseMethods;
 import com.risco.android.fairprice.utils.UniversalImageLoader;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -39,12 +42,22 @@ public class NormalModeActivity extends AppCompatActivity {
     private TextView productName;
     private ProgressBar photoProgress;
     private ImageView productPhoto;
+    private ImageView correctPhoto;
 
 
     //Firebase things
     private FirebaseDatabase mFireBaseDatabase;
     private DatabaseReference myRef;
     private FirebaseMethods mFirebaseMethods;
+
+    //product price
+    private int productRealPrice;
+
+    //product number
+    private int num=1;
+
+    //Handler
+    private final Handler handler = new Handler();
 
 
     @Override
@@ -54,9 +67,89 @@ public class NormalModeActivity extends AppCompatActivity {
 
         mFirebaseMethods=new FirebaseMethods(mContext);
 
+
         initializeWidgets();
         setupFirebase();
+        initializeButtonsListeners();
 
+    }
+
+    private void initializeButtonsListeners() {
+
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                correctPhoto.setVisibility(View.GONE);
+            }
+        };
+
+        final Runnable setupFirebaseRunnable = new Runnable() {
+            @Override
+            public void run() {
+                setupFirebase();
+            }
+        };
+
+
+
+        redButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(redButton.getText().equals(String.valueOf(productRealPrice))){
+                    num=num+1;
+
+                    correctPhoto.setVisibility(View.VISIBLE);
+                    handler.postDelayed(r, 1000);
+
+
+                    handler.postDelayed(setupFirebaseRunnable, 1000);
+
+                }
+            }
+        });
+
+        blueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(blueButton.getText().equals(String.valueOf(productRealPrice))){
+                    num=num+1;
+
+                    correctPhoto.setVisibility(View.VISIBLE);
+                    handler.postDelayed(r, 1000);
+
+                    handler.postDelayed(setupFirebaseRunnable, 1000);
+
+                }
+            }
+        });
+
+        purpleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(purpleButton.getText().equals(String.valueOf(productRealPrice))){
+                    num=num+1;
+
+                    correctPhoto.setVisibility(View.VISIBLE);
+                    handler.postDelayed(r, 1000);
+
+                    handler.postDelayed(setupFirebaseRunnable, 1000);
+                }
+            }
+        });
+
+        greenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(greenButton.getText().equals(String.valueOf(productRealPrice))){
+                    num=num+1;
+
+                    correctPhoto.setVisibility(View.VISIBLE);
+                    handler.postDelayed(r, 1000);
+
+                    handler.postDelayed(setupFirebaseRunnable, 1000);
+                }
+            }
+        });
     }
 
     private void initializeWidgets(){
@@ -67,18 +160,32 @@ public class NormalModeActivity extends AppCompatActivity {
         productName=(TextView)findViewById(R.id.text_product_name);
         photoProgress=(ProgressBar)findViewById(R.id.progress_photo);
         productPhoto=(ImageView)findViewById(R.id.image_product);
+        correctPhoto=(ImageView)findViewById(R.id.image_correct);
     }
 
     private void setWidgets(Question question){
         Log.d(TAG, "setWidgets: question: "+question.toString());
-        setImage(question);
-        ArrayList<Integer> randomPrices = setRandomPrices(question.getReal_price());
-        redButton.setText(String.valueOf(question.getReal_price()));
-        blueButton.setText(String.valueOf(randomPrices.get(0)));
-        greenButton.setText(String.valueOf(randomPrices.get(1)));
-        purpleButton.setText(String.valueOf(randomPrices.get(2)));
+        try{
+            //setting global variable
+            productRealPrice=question.getReal_price().intValue();
 
-        productName.setText(question.getProduct());
+            setImage(question);
+            ArrayList<Integer> randomPrices = setRandomPrices(question.getReal_price());
+            randomPrices.add(question.getReal_price().intValue());
+
+            Collections.shuffle(randomPrices);
+
+            blueButton.setText(String.valueOf(randomPrices.get(0)));
+            greenButton.setText(String.valueOf(randomPrices.get(1)));
+            purpleButton.setText(String.valueOf(randomPrices.get(2)));
+            redButton.setText(String.valueOf(randomPrices.get(3)));
+
+            productName.setText(question.getProduct());
+        }catch (Exception e){
+            Log.e(TAG, "setWidgets: "+e.getMessage());
+
+        }
+
 
     }
 
@@ -120,7 +227,7 @@ public class NormalModeActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                setWidgets(mFirebaseMethods.getQuestion(dataSnapshot));
+                setWidgets(mFirebaseMethods.getQuestion(dataSnapshot, num));
             }
 
             @Override

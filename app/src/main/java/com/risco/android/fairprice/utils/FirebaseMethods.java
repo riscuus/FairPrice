@@ -27,10 +27,12 @@ public class FirebaseMethods {
         myRef=mFirebaseDatabase.getReference();
     }
 
-    public Question getQuestion(DataSnapshot dataSnapshot){
+    public Question getQuestion(DataSnapshot dataSnapshot, int num){
         Log.d(TAG, "getQuestion: Retrieving question from database");
 
         Question question = new Question();
+
+        String numString = String.valueOf(num);
 
         for(DataSnapshot ds: dataSnapshot.getChildren()){
             if(ds.getKey().equals("questions")){
@@ -38,22 +40,23 @@ public class FirebaseMethods {
                     Log.d(TAG, "getQuestion: datasnapshot:"+ds);
 
                     question.setNumber(
-                            ds.child("1").getValue(Question.class).getNumber()
+                            ds.child(numString).getValue(Question.class).getNumber()
                     );
 
                     question.setReal_price(
-                            ds.child("1").getValue(Question.class).getReal_price()
+                            ds.child(numString).getValue(Question.class).getReal_price()
                     );
 
                     question.setProduct(
-                            ds.child("1").getValue(Question.class).getProduct()
+                            ds.child(numString).getValue(Question.class).getProduct()
                     );
                     question.setUrl(
-                            ds.child("1").getValue(Question.class).getUrl()
+                            ds.child(numString).getValue(Question.class).getUrl()
                     );
 
                 }catch(NullPointerException ex){
-                    Log.d(TAG, "getQuestion: NullPointerException: "+ex.getMessage());
+                    Log.e(TAG, "getQuestion: NullPointerException: "+ex.getMessage());
+
                 }
             }
         }
