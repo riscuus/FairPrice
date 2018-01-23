@@ -2,7 +2,9 @@ package com.risco.android.fairprice.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +45,8 @@ public class NormalModeActivity extends AppCompatActivity {
     private ProgressBar photoProgress;
     private ImageView productPhoto;
     private ImageView correctPhoto;
+    private ImageView progressTime;
+
 
 
     //Firebase things
@@ -71,6 +75,63 @@ public class NormalModeActivity extends AppCompatActivity {
         initializeWidgets();
         setupFirebase();
         initializeButtonsListeners();
+        setupCountDown();
+
+    }
+
+    private void setupCountDown(){
+        new CountDownTimer(10000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                long eight = 8000;
+                Long millis = millisUntilFinished;
+                Log.d(TAG, "onTick: millis: "+millis);
+                Log.d(TAG, "onTick: millisUntilFinished: "+millisUntilFinished);
+                if(millis>8000 && millis<9000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_2));
+                    Log.d(TAG, "onTick: 8000--9000");
+                }
+                if(millis>7000 && millis<8000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_15));
+                    Log.d(TAG, "onTick: 7000--8000");
+                }
+                if(millis>6000 && millis<7000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_3));
+                    Log.d(TAG, "onTick: 6000--7000");
+                }
+
+                if(millis>5000 && millis<6000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_4));
+                    Log.d(TAG, "onTick: 5000--6000");
+                }
+                if(millis>4000 && millis<5000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_35));
+                    Log.d(TAG, "onTick: 4000--5000");
+                }
+
+                if(millis>3000 && millis<4000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_5));
+                    Log.d(TAG, "onTick: 3000--4000");
+                }
+
+                if(millis>2000 && millis<3000){
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_6));
+                    Log.d(TAG, "onTick: 2000--3000");
+
+                }
+                if(millis>1000 && millis<2000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_7));
+                    Log.d(TAG, "onTick: 1000--2000");
+                }
+
+
+            }
+
+            public void onFinish() {
+                progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_7));
+                productName.setText("You lose");
+            }
+        }.start();
 
     }
 
@@ -166,6 +227,7 @@ public class NormalModeActivity extends AppCompatActivity {
         photoProgress=(ProgressBar)findViewById(R.id.progress_photo);
         productPhoto=(ImageView)findViewById(R.id.image_product);
         correctPhoto=(ImageView)findViewById(R.id.image_correct);
+        progressTime=(ImageView)findViewById(R.id.progress_time);
     }
 
     private void setWidgets(Question question){
