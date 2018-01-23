@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,7 +35,7 @@
                     android:layout_below="@id/progress_time"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/mikado_bold_demo"
-                    android:text="TV Samsung OLED 2018"
+                    tools:text="Samsung galaxy S3"
                     android:textSize="30dp" />
             </RelativeLayout>
 
@@ -88,7 +89,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/selector_button_green"
                             android:fontFamily="@font/mikado_bold_demo"
-                            android:text="2300€"
+                            tools:text="2300€"
                             android:textSize="30dp"
                             android:layout_gravity="center_vertical"
                             />
@@ -102,7 +103,7 @@
                             android:layout_marginEnd="40dp"
                             android:background="@drawable/selector_button_purple"
                             android:fontFamily="@font/mikado_bold_demo"
-                            android:text="20€"
+                            tools:text="20€"
                             android:textSize="30dp"
                             android:layout_gravity="center_vertical"/>
 
@@ -122,7 +123,7 @@
                                 android:layout_height="80dp"
                                 android:background="@drawable/selector_button_red"
                                 android:fontFamily="@font/mikado_bold_demo"
-                                android:text="2350€"
+                                tools:text="2350€"
                                 android:textSize="30dp"
                                 android:layout_marginStart="40dp"
                                 android:layout_marginEnd="10dp"
@@ -136,7 +137,7 @@
                                 android:layout_alignParentRight="true"
                                 android:background="@drawable/selector_button_blue"
                                 android:fontFamily="@font/mikado_bold_demo"
-                                android:text="330€"
+                                tools:text="330€"
                                 android:textSize="30dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="40dp"/>
