@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "12353945763",
+    "firebase_url": "https://fairprice-4bba7.firebaseio.com",
+    "project_id": "fairprice-4bba7",
+    "storage_bucket": "fairprice-4bba7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12353945763:android:69dc13fc00cb7c57",
+        "android_client_info": {
+          "package_name": "com.risco.android.fairprice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12353945763-p576dd40ff6l1uskqf7jqp0nq713q3v0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.risco.android.fairprice",
+            "certificate_hash": "9373b590d62476e8469b2129cf7952a12ebcd500"
+          }
+        },
+        {
+          "client_id": "12353945763-5i3cs6vk84tjorhu09p14kafs53f3p2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjzwFVrAjaIQs_6ScAgw9F-RhqgSiVMNQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12353945763-5i3cs6vk84tjorhu09p14kafs53f3p2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

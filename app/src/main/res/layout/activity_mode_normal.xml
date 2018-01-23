@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/timer"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/progress_time"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV Samsung OLED 2018"
+                    android:textSize="30dp"
+                    android:fontFamily="@font/mikado_bold_demo"
+                    android:layout_below="@id/progress_time"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/text_product_name"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/image_product"
+                    />
+                <ProgressBar
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:foregroundTint="@color/light_blue"
+                    android:id="@+id/progress_photo"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="10"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="5"
+                        android:paddingTop="10dp"
+                        android:paddingStart="50dp"
+                        android:paddingEnd="50dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <Button
+                                android:layout_width="120dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/selector_button_green"
+                                android:text="2300€"
+                                android:fontFamily="@font/mikado_bold_demo"
+                                android:textSize="30dp"
+                                android:id="@+id/button_green"
+                                />
+
+                            <Button
+                                android:layout_width="120dp"
+                                android:layout_height="80dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/selector_button_purple"
+                                android:text="20€"
+                                android:fontFamily="@font/mikado_bold_demo"
+                                android:textSize="30dp"
+                                android:id="@+id/button_purple"
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight="5"
+                        android:paddingStart="50dp"
+                        android:paddingEnd="50dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <Button
+                                android:layout_width="120dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/selector_button_red"
+                                android:text="2350€"
+                                android:fontFamily="@font/mikado_bold_demo"
+                                android:textSize="30dp"
+                                android:id="@+id/button_red"
+                                />
+                            <Button
+                                android:layout_width="120dp"
+                                android:layout_height="80dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/selector_button_blue"
+                                android:text="330€"
+                                android:fontFamily="@font/mikado_bold_demo"
+                                android:textSize="30dp"
+                                android:id="@+id/button_blue"
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+            
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
