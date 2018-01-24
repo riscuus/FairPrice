@@ -48,6 +48,10 @@ public class NormalModeActivity extends AppCompatActivity {
     private ImageView correctPhoto;
     private ImageView progressTime;
     private Button tryAgainButton;
+    private ImageView heart1;
+    private ImageView heart2;
+    private ImageView heart3;
+    private TextView textPoints;
 
 
 
@@ -68,6 +72,9 @@ public class NormalModeActivity extends AppCompatActivity {
     //timer
     private CountDownTimer timer;
 
+    //lives
+    private int lives;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +82,12 @@ public class NormalModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_normal);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
+        lives=3;
 
 
         initializeWidgets();
         setupFirebase();
+        setHearts();
         initializeButtonsListeners();
 
 
@@ -149,9 +158,14 @@ public class NormalModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, HomeScreenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
+        textPoints =(TextView)findViewById(R.id.text_points);
+        Log.d(TAG, "initializeTryAgainButton: num: "+num);
+        textPoints.setText(String.valueOf(num-1));
     }
 
     private void initializeButtonsListeners() {
@@ -170,13 +184,21 @@ public class NormalModeActivity extends AppCompatActivity {
             }
         };
 
+        final Runnable setContentView = new Runnable() {
+            @Override
+            public void run() {
+                setContentView(R.layout.acitivity_mode_normal_losed);
+                initializeTryAgainButton();
+            }
+        };
+
 
 
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String redButtonText = redButton.getText().toString().replace("€", "");
-                if(redButtonText.equals(String.valueOf(productRealPrice))){
+                if(redButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
                     timer.cancel();
 
                     num=num+1;
@@ -186,8 +208,13 @@ public class NormalModeActivity extends AppCompatActivity {
 
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
+                }else{
+                    lives=lives-1;
+                    setHearts();
+                    if(lives==0){
 
-
+                        handler.postDelayed(setContentView, 200);
+                    }
                 }
             }
         });
@@ -196,7 +223,7 @@ public class NormalModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String blueButtonText = blueButton.getText().toString().replace("€", "");
-                if(blueButtonText.equals(String.valueOf(productRealPrice))){
+                if(blueButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
                     timer.cancel();
                     num=num+1;
 
@@ -206,6 +233,12 @@ public class NormalModeActivity extends AppCompatActivity {
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
 
+                }else{
+                    lives=lives-1;
+                    setHearts();
+                    if(lives==0){
+                        handler.postDelayed(setContentView, 200);
+                    }
                 }
             }
         });
@@ -214,7 +247,7 @@ public class NormalModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String purpleButtonText = purpleButton.getText().toString().replace("€", "");
-                if(purpleButtonText.equals(String.valueOf(productRealPrice))){
+                if(purpleButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
                     timer.cancel();
                     num=num+1;
 
@@ -223,6 +256,12 @@ public class NormalModeActivity extends AppCompatActivity {
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
+                }else{
+                    lives=lives-1;
+                    setHearts();
+                    if(lives==0){
+                        handler.postDelayed(setContentView, 200);
+                    }
                 }
             }
         });
@@ -232,7 +271,7 @@ public class NormalModeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String greenButtonText = greenButton.getText().toString().replace("€", "");
                 Log.d(TAG, "onClick: greenButtonText: "+ greenButtonText);
-                if(greenButtonText.equals(String.valueOf(productRealPrice))){
+                if(greenButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
                     timer.cancel();
                     num=num+1;
 
@@ -241,10 +280,41 @@ public class NormalModeActivity extends AppCompatActivity {
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
+                }else{
+                    lives=lives-1;
+                    setHearts();
+                    if(lives==0){
+                        handler.postDelayed(setContentView, 200);
+                    }
                 }
             }
         });
 
+    }
+
+    private void setHearts() {
+        switch (lives){
+            case 3:
+                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                break;
+            case 2:
+                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                break;
+            case 1:
+                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
+                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                break;
+            case 0:
+                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
+                break;
+        }
     }
 
     private void initializeWidgets(){
@@ -257,6 +327,11 @@ public class NormalModeActivity extends AppCompatActivity {
         productPhoto=(ImageView)findViewById(R.id.image_product);
         correctPhoto=(ImageView)findViewById(R.id.image_correct);
         progressTime=(ImageView)findViewById(R.id.progress_time);
+        heart1=(ImageView)findViewById(R.id.heart1);
+        heart2=(ImageView)findViewById(R.id.heart2);
+        heart3=(ImageView)findViewById(R.id.heart3);
+
+
     }
 
     private void setWidgets(Question question){
