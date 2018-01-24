@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/game_losed_masked" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KEEP PLAYING"
+            android:fontFamily="@font/mikado_bold_demo"
+            android:textColor="@color/white"
+            android:textSize="31dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/text_keep_playing"
+            />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Your best strike is about to come!"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:layout_below="@id/text_keep_playing"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="111dp"
+            android:src="@drawable/rectangle_points" 
+            android:id="@+id/rectangle_points"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rectangle_points"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@id/rectangle_points"
+            android:layout_alignRight="@id/rectangle_points"
+            android:text="POINTS"
+            android:gravity="center_horizontal"
+            android:textColor="@color/really_dark_blue"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rectangle_points"
+            android:layout_alignBottom="@id/rectangle_points"
+            android:layout_alignLeft="@id/rectangle_points"
+            android:layout_alignRight="@id/rectangle_points"
+            android:gravity="center"
+            android:text="0"
+            android:fontFamily="@font/mikado_bold_demo"
+            android:textColor="@color/really_dark_blue"
+            android:textSize="30dp"
+            />
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_button_tryagain"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            />
+
+
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -63,6 +63,9 @@ public class NormalModeActivity extends AppCompatActivity {
     //Handler
     private final Handler handler = new Handler();
 
+    //timer
+    private CountDownTimer timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,51 +78,54 @@ public class NormalModeActivity extends AppCompatActivity {
         initializeWidgets();
         setupFirebase();
         initializeButtonsListeners();
-        setupCountDown();
+
 
     }
 
     private void setupCountDown(){
-        new CountDownTimer(10000, 1000) {
+        timer = new CountDownTimer(9000, 500) {
 
             public void onTick(long millisUntilFinished) {
-                long eight = 8000;
                 Long millis = millisUntilFinished;
                 Log.d(TAG, "onTick: millis: "+millis);
                 Log.d(TAG, "onTick: millisUntilFinished: "+millisUntilFinished);
                 if(millis>8000 && millis<9000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_2));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_1));
                     Log.d(TAG, "onTick: 8000--9000");
                 }
                 if(millis>7000 && millis<8000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_15));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_2));
                     Log.d(TAG, "onTick: 7000--8000");
                 }
                 if(millis>6000 && millis<7000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_3));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_15));
                     Log.d(TAG, "onTick: 6000--7000");
                 }
 
                 if(millis>5000 && millis<6000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_4));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_3));
                     Log.d(TAG, "onTick: 5000--6000");
                 }
                 if(millis>4000 && millis<5000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_35));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_4));
                     Log.d(TAG, "onTick: 4000--5000");
                 }
 
                 if(millis>3000 && millis<4000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_5));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_35));
                     Log.d(TAG, "onTick: 3000--4000");
                 }
 
                 if(millis>2000 && millis<3000){
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_6));
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_5));
                     Log.d(TAG, "onTick: 2000--3000");
 
                 }
                 if(millis>1000 && millis<2000) {
+                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_6));
+                    Log.d(TAG, "onTick: 1000--2000");
+                }
+                if(millis>500 && millis<1000) {
                     progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_7));
                     Log.d(TAG, "onTick: 1000--2000");
                 }
@@ -128,8 +134,7 @@ public class NormalModeActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_7));
-                productName.setText("You lose");
+                setContentView(R.layout.acitivity_mode_normal_losed);
             }
         }.start();
 
@@ -158,6 +163,8 @@ public class NormalModeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String redButtonText = redButton.getText().toString().replace("€", "");
                 if(redButtonText.equals(String.valueOf(productRealPrice))){
+                    timer.cancel();
+
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
@@ -165,6 +172,7 @@ public class NormalModeActivity extends AppCompatActivity {
 
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
+
 
                 }
             }
@@ -175,12 +183,14 @@ public class NormalModeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String blueButtonText = blueButton.getText().toString().replace("€", "");
                 if(blueButtonText.equals(String.valueOf(productRealPrice))){
+                    timer.cancel();
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
                     handler.postDelayed(r, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
+
 
                 }
             }
@@ -191,12 +201,14 @@ public class NormalModeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String purpleButtonText = purpleButton.getText().toString().replace("€", "");
                 if(purpleButtonText.equals(String.valueOf(productRealPrice))){
+                    timer.cancel();
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
                     handler.postDelayed(r, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
+
                 }
             }
         });
@@ -207,12 +219,14 @@ public class NormalModeActivity extends AppCompatActivity {
                 String greenButtonText = greenButton.getText().toString().replace("€", "");
                 Log.d(TAG, "onClick: greenButtonText: "+ greenButtonText);
                 if(greenButtonText.equals(String.valueOf(productRealPrice))){
+                    timer.cancel();
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
                     handler.postDelayed(r, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
+
                 }
             }
         });
@@ -295,6 +309,7 @@ public class NormalModeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 setWidgets(mFirebaseMethods.getQuestion(dataSnapshot, num));
+                setupCountDown();
             }
 
             @Override
