@@ -1,6 +1,7 @@
 package com.risco.android.fairprice.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -147,14 +148,8 @@ public class NormalModeActivity extends AppCompatActivity {
         tryAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_mode_normal);
-
-                mFirebaseMethods=new FirebaseMethods(mContext);
-
-                num=1;
-                initializeWidgets();
-                setupFirebase();
-                initializeButtonsListeners();
+                Intent intent = new Intent(mContext, HomeScreenActivity.class);
+                startActivity(intent);
             }
         });
     }
