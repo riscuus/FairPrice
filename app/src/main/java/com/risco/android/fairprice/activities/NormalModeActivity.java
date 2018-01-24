@@ -46,6 +46,7 @@ public class NormalModeActivity extends AppCompatActivity {
     private ImageView productPhoto;
     private ImageView correctPhoto;
     private ImageView progressTime;
+    private Button tryAgainButton;
 
 
 
@@ -135,9 +136,27 @@ public class NormalModeActivity extends AppCompatActivity {
 
             public void onFinish() {
                 setContentView(R.layout.acitivity_mode_normal_losed);
+                initializeTryAgainButton();
             }
         }.start();
 
+    }
+
+    private void initializeTryAgainButton() {
+        tryAgainButton=(Button)findViewById(R.id.button_tryagain);
+        tryAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.activity_mode_normal);
+
+                mFirebaseMethods=new FirebaseMethods(mContext);
+
+                num=1;
+                initializeWidgets();
+                setupFirebase();
+                initializeButtonsListeners();
+            }
+        });
     }
 
     private void initializeButtonsListeners() {
@@ -230,6 +249,7 @@ public class NormalModeActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void initializeWidgets(){
