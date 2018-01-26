@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.NormalModeActivity">
+            android:name=".activities.EasyModeActivity">
+        </activity>
+        <activity
+            android:name=".activities.ChooseActivity">
         </activity>
     </application>
 

@@ -32,10 +32,10 @@ import java.util.Random;
  * Created by Albert Risco on 21/01/2018.
  */
 
-public class NormalModeActivity extends AppCompatActivity {
-    private static final String TAG = "NormalModeActivity";
+public class EasyModeActivity extends AppCompatActivity {
+    private static final String TAG = "EasyModeActivity";
 
-    private Context mContext = NormalModeActivity.this;
+    private Context mContext = EasyModeActivity.this;
 
     //Layout things
     private Button redButton;
@@ -79,7 +79,7 @@ public class NormalModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mode_normal);
+        setContentView(R.layout.activity_mode_normal_easy);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
         lives=3;

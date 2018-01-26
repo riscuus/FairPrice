@@ -27,7 +27,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         normalModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, NormalModeActivity.class);
+                Intent intent = new Intent(mContext, ChooseActivity.class);
                 startActivity(intent);
             }
         });
