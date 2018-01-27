@@ -23,6 +23,9 @@
         <activity
             android:name=".activities.ChooseActivity">
         </activity>
+        <activity
+            android:name=".activities.HardModeActivity">
+        </activity>
     </application>
 
 </manifest>

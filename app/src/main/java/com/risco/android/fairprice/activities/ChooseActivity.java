@@ -57,6 +57,14 @@ public class ChooseActivity extends AppCompatActivity {
             }
         });
 
+        playPurpleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, HardModeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

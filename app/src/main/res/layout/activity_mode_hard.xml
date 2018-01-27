@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <RelativeLayout
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/text_lives"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/mikado_bold_demo"
+                        android:text="3"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/heart1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_toEndOf="@id/text_lives"
+                        android:src="@drawable/ic_heart" />
+
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/timer_1" />
+
+                <ProgressBar
+                    android:id="@+id/progress_time"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:progressDrawable="@drawable/progress_time_drawable"
+                    android:rotation="-90" />
+
+                <TextView
+                    android:id="@+id/text_product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/mikado_bold_demo"
+                    android:textSize="15dp"
+                    tools:text="Samsung galaxy S3" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+                <ImageView
+                    android:id="@+id/image_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ProgressBar
+                    android:id="@+id/progress_photo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:foregroundTint="@color/light_blue" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/correct_image"
+                    android:visibility="gone"
+                    android:id="@+id/image_correct"/>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/heart_loss"
+                    android:id="@+id/image_no_correct"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/edit_text_background"
+                    android:id="@+id/background_edit_text"
+                    />
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignStart="@id/background_edit_text"
+                    android:id="@+id/price_text"
+                    />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:columnCount="3"
+                    android:rowCount="4"
+                    >
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_one"
+                    />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_two"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_three"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_four"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_five"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_six"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_seven"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_eight"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_nine"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_back"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_zero"
+                        />
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/selector_button_ok"
+                        />
+
+                </GridLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
