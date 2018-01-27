@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -48,10 +47,9 @@ public class EasyModeActivity extends AppCompatActivity {
     private ImageView correctPhoto;
     private ProgressBar progressTime;
     private Button tryAgainButton;
-    private ImageView heart1;
-    private ImageView heart2;
-    private ImageView heart3;
     private TextView textPoints;
+    private TextView livesText;
+    private ImageView incorrectPhoto;
 
 
 
@@ -109,6 +107,7 @@ public class EasyModeActivity extends AppCompatActivity {
                 progressTime.setProgress(100);
                 lives=lives-1;
                 setHearts();
+                showPhotoIncorrect();
                 if(lives==0){
                     setContentView(R.layout.acitivity_mode_normal_losed);
                     initializeTryAgainButton();
@@ -137,10 +136,20 @@ public class EasyModeActivity extends AppCompatActivity {
         Log.d(TAG, "initializeTryAgainButton: num: "+num);
         textPoints.setText(String.valueOf(num-1));
     }
+    private void showPhotoIncorrect(){
+        final Runnable setVisibilityGoneIncorrect = new Runnable() {
+            @Override
+            public void run() {
+                incorrectPhoto.setVisibility(View.GONE);
+            }
+        };
+        incorrectPhoto.setVisibility(View.VISIBLE);
+        handler.postDelayed(setVisibilityGoneIncorrect, 1000);
+    }
 
     private void initializeButtonsListeners() {
 
-        final Runnable r = new Runnable() {
+        final Runnable setVisibilityCorrectGone = new Runnable() {
             @Override
             public void run() {
                 correctPhoto.setVisibility(View.GONE);
@@ -162,8 +171,6 @@ public class EasyModeActivity extends AppCompatActivity {
             }
         };
 
-
-
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,13 +181,14 @@ public class EasyModeActivity extends AppCompatActivity {
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(r, 1000);
+                    handler.postDelayed(setVisibilityCorrectGone, 1000);
 
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
                 }else{
                     lives=lives-1;
                     setHearts();
+                    showPhotoIncorrect();
                     if(lives==0){
 
                         handler.postDelayed(setContentView, 200);
@@ -198,7 +206,7 @@ public class EasyModeActivity extends AppCompatActivity {
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(r, 1000);
+                    handler.postDelayed(setVisibilityCorrectGone, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
@@ -206,6 +214,7 @@ public class EasyModeActivity extends AppCompatActivity {
                 }else{
                     lives=lives-1;
                     setHearts();
+                    showPhotoIncorrect();
                     if(lives==0){
                         handler.postDelayed(setContentView, 200);
                     }
@@ -222,13 +231,14 @@ public class EasyModeActivity extends AppCompatActivity {
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(r, 1000);
+                    handler.postDelayed(setVisibilityCorrectGone, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
                 }else{
                     lives=lives-1;
                     setHearts();
+                    showPhotoIncorrect();
                     if(lives==0){
                         handler.postDelayed(setContentView, 200);
                     }
@@ -246,13 +256,14 @@ public class EasyModeActivity extends AppCompatActivity {
                     num=num+1;
 
                     correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(r, 1000);
+                    handler.postDelayed(setVisibilityCorrectGone, 1000);
 
                     handler.postDelayed(setupFirebaseRunnable, 1000);
 
                 }else{
                     lives=lives-1;
                     setHearts();
+                    showPhotoIncorrect();
                     if(lives==0){
                         handler.postDelayed(setContentView, 200);
                     }
@@ -263,28 +274,8 @@ public class EasyModeActivity extends AppCompatActivity {
     }
 
     private void setHearts() {
-        switch (lives){
-            case 3:
-                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                break;
-            case 2:
-                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                break;
-            case 1:
-                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_heart));
-                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                break;
-            case 0:
-                heart1.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                heart2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                heart3.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_no_heart));
-                break;
-        }
+        livesText.setText(String.valueOf(lives));
+
     }
 
     private void initializeWidgets(){
@@ -297,9 +288,8 @@ public class EasyModeActivity extends AppCompatActivity {
         productPhoto=(ImageView)findViewById(R.id.image_product);
         correctPhoto=(ImageView)findViewById(R.id.image_correct);
         progressTime=(ProgressBar) findViewById(R.id.progress_time);
-        heart1=(ImageView)findViewById(R.id.heart1);
-        heart2=(ImageView)findViewById(R.id.heart2);
-        heart3=(ImageView)findViewById(R.id.heart3);
+        livesText=findViewById(R.id.text_lives);
+        incorrectPhoto=findViewById(R.id.image_no_correct);
 
 
     }
