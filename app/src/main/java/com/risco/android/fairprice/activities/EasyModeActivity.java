@@ -46,7 +46,7 @@ public class EasyModeActivity extends AppCompatActivity {
     private ProgressBar photoProgress;
     private ImageView productPhoto;
     private ImageView correctPhoto;
-    private ImageView progressTime;
+    private ProgressBar progressTime;
     private Button tryAgainButton;
     private ImageView heart1;
     private ImageView heart2;
@@ -94,59 +94,29 @@ public class EasyModeActivity extends AppCompatActivity {
     }
 
     private void setupCountDown(){
-        timer = new CountDownTimer(9000, 500) {
+        timer = new CountDownTimer(10000, 100) {
 
             public void onTick(long millisUntilFinished) {
                 Long millis = millisUntilFinished;
                 Log.d(TAG, "onTick: millis: "+millis);
-                Log.d(TAG, "onTick: millisUntilFinished: "+millisUntilFinished);
-                if(millis>8000 && millis<9000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_1));
-                    Log.d(TAG, "onTick: 8000--9000");
-                }
-                if(millis>7000 && millis<8000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_2));
-                    Log.d(TAG, "onTick: 7000--8000");
-                }
-                if(millis>6000 && millis<7000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_15));
-                    Log.d(TAG, "onTick: 6000--7000");
-                }
+                progressTime.setProgress(100-(millis.intValue()/100));
 
-                if(millis>5000 && millis<6000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_3));
-                    Log.d(TAG, "onTick: 5000--6000");
-                }
-                if(millis>4000 && millis<5000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_4));
-                    Log.d(TAG, "onTick: 4000--5000");
-                }
-
-                if(millis>3000 && millis<4000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_35));
-                    Log.d(TAG, "onTick: 3000--4000");
-                }
-
-                if(millis>2000 && millis<3000){
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_5));
-                    Log.d(TAG, "onTick: 2000--3000");
-
-                }
-                if(millis>1000 && millis<2000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_6));
-                    Log.d(TAG, "onTick: 1000--2000");
-                }
-                if(millis>500 && millis<1000) {
-                    progressTime.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.timer_7));
-                    Log.d(TAG, "onTick: 1000--2000");
-                }
 
 
             }
 
             public void onFinish() {
-                setContentView(R.layout.acitivity_mode_normal_losed);
-                initializeTryAgainButton();
+                progressTime.setProgress(100);
+                lives=lives-1;
+                setHearts();
+                if(lives==0){
+                    setContentView(R.layout.acitivity_mode_normal_losed);
+                    initializeTryAgainButton();
+                }
+                else{
+                    timer.start();
+                }
+
             }
         }.start();
 
@@ -326,7 +296,7 @@ public class EasyModeActivity extends AppCompatActivity {
         photoProgress=(ProgressBar)findViewById(R.id.progress_photo);
         productPhoto=(ImageView)findViewById(R.id.image_product);
         correctPhoto=(ImageView)findViewById(R.id.image_correct);
-        progressTime=(ImageView)findViewById(R.id.progress_time);
+        progressTime=(ProgressBar) findViewById(R.id.progress_time);
         heart1=(ImageView)findViewById(R.id.heart1);
         heart2=(ImageView)findViewById(R.id.heart2);
         heart3=(ImageView)findViewById(R.id.heart3);

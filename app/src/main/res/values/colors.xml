@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#5E5E5E</color>
     <color name="colorAccent">#FF4081</color>
     <color name="light_blue">#8EA1FF</color>
+    <color name="dark_blue">#5E79FF</color>
     <color name="white">#FFF</color>
     <color name="really_dark_blue">#2B2237</color>
     <color name="light_purple">#D43DCF</color>

@@ -43,7 +43,7 @@ public class ChooseActivity extends AppCompatActivity {
 
     private void initializeWidgets() {
         playBlueButton=(Button)findViewById(R.id.button_play_blue);
-        playGreenButton=(Button)findViewById(R.id.button_play_green);
+        //playGreenButton=(Button)findViewById(R.id.button_play_green);
         playPurpleButton=(Button)findViewById(R.id.button_play_purple);
         backArrow=(ImageView)findViewById(R.id.back_arrow);
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FairPrice</string>
     <string name="easy_mode_description">Choose between 4 possible prices</string>
-    <string name="hard_mode_description">Guess the price of the product with a 10% accuracy</string>
+    <string name="hard_mode_description">Guess the price of the product with a 20% accuracy</string>
     <string name="mixt_mode_description">Play combining the two modes</string>
 
 </resources>
