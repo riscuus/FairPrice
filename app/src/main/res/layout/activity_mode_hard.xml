@@ -71,7 +71,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/mikado_bold_demo"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     tools:text="Samsung galaxy S3" />
             </RelativeLayout>
 
@@ -98,8 +98,8 @@
                     android:visibility="gone"
                     android:id="@+id/image_correct"/>
                 <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/heart_loss"
                     android:id="@+id/image_no_correct"
                     android:visibility="gone"
@@ -119,10 +119,17 @@
                     />
                 <TextView
                     android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:layout_alignStart="@id/background_edit_text"
                     android:id="@+id/price_text"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    tools:text="759"
+                    android:textColor="@color/light_grey"
+                    android:textSize="30dp"
+                    android:fontFamily="@font/mikado_bold_demo"
+                    android:layout_centerVertical="true"
                     />
 
 
@@ -145,6 +152,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_one"
+                        android:id="@+id/one"
                     />
                     <Button
                         android:layout_width="50dp"
@@ -152,6 +160,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_two"
+                        android:id="@+id/two"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -159,6 +168,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_three"
+                        android:id="@+id/three"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -166,6 +176,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_four"
+                        android:id="@+id/four"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -173,6 +184,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_five"
+                        android:id="@+id/five"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -180,6 +192,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_six"
+                        android:id="@+id/six"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -187,6 +200,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_seven"
+                        android:id="@+id/seven"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -194,6 +208,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_eight"
+                        android:id="@+id/eight"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -201,6 +216,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_nine"
+                        android:id="@+id/nine"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -208,6 +224,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_back"
+                        android:id="@+id/back"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -215,6 +232,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_zero"
+                        android:id="@+id/zero"
                         />
                     <Button
                         android:layout_width="50dp"
@@ -222,6 +240,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/selector_button_ok"
+                        android:id="@+id/ok"
                         />
 
                 </GridLayout>

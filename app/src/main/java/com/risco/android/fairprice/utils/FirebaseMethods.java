@@ -28,7 +28,7 @@ public class FirebaseMethods {
     }
 
     public Question getQuestion(DataSnapshot dataSnapshot, int num){
-        Log.d(TAG, "getQuestion: Retrieving question from database");
+        Log.d(TAG, "getQuestion: Retrieving question from database with num: "+num);
 
         Question question = new Question();
 
