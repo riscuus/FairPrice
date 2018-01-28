@@ -146,23 +146,27 @@ public class EasyModeActivity extends AppCompatActivity {
         incorrectPhoto.setVisibility(View.VISIBLE);
         handler.postDelayed(setVisibilityGoneIncorrect, 1000);
     }
-
-    private void initializeButtonsListeners() {
-
-        final Runnable setVisibilityCorrectGone = new Runnable() {
+    private void showPhotoCorrect(){
+        final Runnable setVisibilityGoneCorrect = new Runnable() {
             @Override
             public void run() {
                 correctPhoto.setVisibility(View.GONE);
             }
         };
+        correctPhoto.setVisibility(View.VISIBLE);
+        handler.postDelayed(setVisibilityGoneCorrect, 1000);
+    }
 
+    private void callNextProduct(){
         final Runnable setupFirebaseRunnable = new Runnable() {
             @Override
             public void run() {
                 setupFirebase();
             }
         };
-
+        handler.postDelayed(setupFirebaseRunnable, 1000);
+    }
+    private void showLayoutGameOver(){
         final Runnable setContentView = new Runnable() {
             @Override
             public void run() {
@@ -170,29 +174,47 @@ public class EasyModeActivity extends AppCompatActivity {
                 initializeTryAgainButton();
             }
         };
+        handler.postDelayed(setContentView, 200);
+    }
+
+    private void answerCorrect(){
+        timer.cancel();
+
+        num=num+1;
+
+        showPhotoCorrect();
+
+        callNextProduct();
+
+        initializeButtonsListeners();
+    }
+    private void answerIncorrect(Button button){
+        lives=lives-1;
+        setHearts();
+        showPhotoIncorrect();
+        button.setText("");
+        button.setOnClickListener(null);
+        timer.cancel();
+        timer.start();
+        if(lives==0){
+            showLayoutGameOver();
+        }
+    }
+
+    private void initializeButtonsListeners() {
+
+
 
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String redButtonText = redButton.getText().toString().replace("€", "");
                 if(redButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
-                    timer.cancel();
 
-                    num=num+1;
+                    answerCorrect();
 
-                    correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(setVisibilityCorrectGone, 1000);
-
-
-                    handler.postDelayed(setupFirebaseRunnable, 1000);
                 }else{
-                    lives=lives-1;
-                    setHearts();
-                    showPhotoIncorrect();
-                    if(lives==0){
-
-                        handler.postDelayed(setContentView, 200);
-                    }
+                    answerIncorrect(redButton);
                 }
             }
         });
@@ -202,22 +224,11 @@ public class EasyModeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String blueButtonText = blueButton.getText().toString().replace("€", "");
                 if(blueButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
-                    timer.cancel();
-                    num=num+1;
-
-                    correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(setVisibilityCorrectGone, 1000);
-
-                    handler.postDelayed(setupFirebaseRunnable, 1000);
+                    answerCorrect();
 
 
                 }else{
-                    lives=lives-1;
-                    setHearts();
-                    showPhotoIncorrect();
-                    if(lives==0){
-                        handler.postDelayed(setContentView, 200);
-                    }
+                    answerIncorrect(blueButton);
                 }
             }
         });
@@ -226,22 +237,13 @@ public class EasyModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String purpleButtonText = purpleButton.getText().toString().replace("€", "");
+
                 if(purpleButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
-                    timer.cancel();
-                    num=num+1;
 
-                    correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(setVisibilityCorrectGone, 1000);
-
-                    handler.postDelayed(setupFirebaseRunnable, 1000);
+                    answerCorrect();
 
                 }else{
-                    lives=lives-1;
-                    setHearts();
-                    showPhotoIncorrect();
-                    if(lives==0){
-                        handler.postDelayed(setContentView, 200);
-                    }
+                    answerIncorrect(purpleButton);
                 }
             }
         });
@@ -250,23 +252,13 @@ public class EasyModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String greenButtonText = greenButton.getText().toString().replace("€", "");
-                Log.d(TAG, "onClick: greenButtonText: "+ greenButtonText);
+
                 if(greenButtonText.equals(String.valueOf(productRealPrice)) && lives!=0){
-                    timer.cancel();
-                    num=num+1;
 
-                    correctPhoto.setVisibility(View.VISIBLE);
-                    handler.postDelayed(setVisibilityCorrectGone, 1000);
-
-                    handler.postDelayed(setupFirebaseRunnable, 1000);
+                    answerCorrect();
 
                 }else{
-                    lives=lives-1;
-                    setHearts();
-                    showPhotoIncorrect();
-                    if(lives==0){
-                        handler.postDelayed(setContentView, 200);
-                    }
+                    answerIncorrect(greenButton);
                 }
             }
         });
