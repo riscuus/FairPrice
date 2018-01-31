@@ -84,7 +84,7 @@ public class HardModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_hard);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
-        lives=3;
+        lives=10;
 
         initializeWidgets();
         setupFirebase();

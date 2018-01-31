@@ -80,7 +80,7 @@ public class EasyModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_normal_easy);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
-        lives=3;
+        lives=10;
 
 
         initializeWidgets();
@@ -166,6 +166,18 @@ public class EasyModeActivity extends AppCompatActivity {
         };
         handler.postDelayed(setupFirebaseRunnable, 1000);
     }
+    private void showAllButtonsDelayed(){
+        final Runnable showButtons = new Runnable() {
+            @Override
+            public void run() {
+                greenButton.setVisibility(View.VISIBLE);
+                redButton.setVisibility(View.VISIBLE);
+                blueButton.setVisibility(View.VISIBLE);
+                purpleButton.setVisibility(View.VISIBLE);
+            }
+        };
+        handler.postDelayed(showButtons, 1000);
+    }
     private void showLayoutGameOver(){
         final Runnable setContentView = new Runnable() {
             @Override
@@ -186,13 +198,15 @@ public class EasyModeActivity extends AppCompatActivity {
 
         callNextProduct();
 
+        showAllButtonsDelayed();
+
         initializeButtonsListeners();
     }
     private void answerIncorrect(Button button){
         lives=lives-1;
         setHearts();
         showPhotoIncorrect();
-        button.setText("");
+        button.setVisibility(View.INVISIBLE);
         button.setOnClickListener(null);
         timer.cancel();
         timer.start();
