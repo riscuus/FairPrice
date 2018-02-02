@@ -52,6 +52,7 @@ public class HardModeActivity extends AppCompatActivity {
     private Button tryAgainButton;
     private TextView textPoints;
     private TextView editText;
+    private ImageView greatPhoto;
 
 
     public static final String TAG = "HardModeActivity";
@@ -84,7 +85,7 @@ public class HardModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_hard);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
-        lives=10;
+        lives=4;
 
         initializeWidgets();
         setupFirebase();
@@ -113,6 +114,7 @@ public class HardModeActivity extends AppCompatActivity {
         livesText=findViewById(R.id.text_lives);
         incorrectPhoto=findViewById(R.id.image_no_correct);
         editText=findViewById(R.id.price_text);
+        greatPhoto=findViewById(R.id.great_image);
 
     }
 
@@ -155,6 +157,17 @@ public class HardModeActivity extends AppCompatActivity {
         };
         correctPhoto.setVisibility(View.VISIBLE);
         handler.postDelayed(setVisibilityGoneCorrect, 1000);
+    }
+
+    private void showPhotoExactPrice(){
+        final Runnable setVisibilityGoneGreat = new Runnable() {
+            @Override
+            public void run() {
+                greatPhoto.setVisibility(View.GONE);
+            }
+        };
+        greatPhoto.setVisibility(View.VISIBLE);
+        handler.postDelayed(setVisibilityGoneGreat, 1000);
     }
 
     private void callNextProduct(){
@@ -298,7 +311,16 @@ public class HardModeActivity extends AppCompatActivity {
             int limitUp = productRealPrice +productRealPrice*25/100;
             int limitDown = productRealPrice -productRealPrice*25/100;
 
-            if(price<limitUp && price>limitDown && price!=0){
+            if(price==productRealPrice){
+                num=num+1;
+
+                showPhotoExactPrice();
+
+                callNextProduct();
+
+            }
+
+            else if(price<limitUp && price>limitDown && price!=0){
                 num=num+1;
 
                 showPhotoCorrect();

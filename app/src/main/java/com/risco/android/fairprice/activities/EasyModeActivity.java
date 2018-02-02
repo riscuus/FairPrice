@@ -80,7 +80,7 @@ public class EasyModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_normal_easy);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
-        lives=10;
+        lives=4;
 
 
         initializeWidgets();
