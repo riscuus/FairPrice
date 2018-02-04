@@ -15,6 +15,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private Context mContext=HomeScreenActivity.this;
 
     private Button normalModeButton;
+    private Button challengeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,19 @@ public class HomeScreenActivity extends AppCompatActivity {
 
 
         normalModeButton = (Button) findViewById(R.id.button_normal);
+        challengeButton=findViewById(R.id.button_challenge);
 
         normalModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ChooseActivity.class);
+                startActivity(intent);
+            }
+        });
+        challengeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ChallengeActivity.class);
                 startActivity(intent);
             }
         });

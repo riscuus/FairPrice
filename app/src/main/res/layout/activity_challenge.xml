@@ -1,42 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Iphone X"
-            android:fontFamily="@font/mikado_bold_demo"
-            android:textSize="30dp"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:text="Iphone X"
-            android:fontFamily="@font/mikado_bold_demo"
-            android:textSize="30dp"
-            android:layout_marginBottom="10dp"/>
-        <ImageView
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_above="@id/reference"
-            android:id="@+id/image_product_old"/>
+            android:layout_height="match_parent"
+            android:layout_above="@id/reference">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:alpha="0.3"
+                android:id="@+id/image_product_up"/>
+            <ImageView
+                android:id="@+id/image_correct_up"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/correct_image"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_centerVertical="true"
             android:id="@+id/reference"/>
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:layout_below="@id/reference"
-            android:id="@+id/image_product_new"/>
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:alpha="0.3"
+                android:id="@+id/image_product_down"/>
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/correct_image"
+                android:id="@+id/image_correct_down"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/timer_1" />
+
+        <ProgressBar
+            android:id="@+id/progress_time"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:progressDrawable="@drawable/progress_time_drawable"
+            android:rotation="-90" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            tools:text="Iphone X"
+            android:fontFamily="@font/mikado_bold_demo"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="80dp"
+            android:id="@+id/productNameUp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="costs"
+            android:layout_below="@id/productNameUp"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/real_price_up"
+            tools:text="350€"
+            android:textColor="@color/light_red"
+            android:alpha="1"
+            android:textSize="30sp"
+            android:fontFamily="@font/mikado_bold_demo"
+            android:layout_below="@id/productNameUp"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/reference"
+            tools:text="Iphone X"
+            android:fontFamily="@font/mikado_bold_demo"
+            android:textSize="30sp"
+            android:layout_marginTop="80dp"
+            android:textColor="@color/white"
+            android:id="@+id/productNameDown"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/selector_button_more"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/productNameDown"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/button_more"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/button_more"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/selector_button_less"
+            android:id="@+id/button_less"
+            />
+
+
 
         <ImageView
             android:layout_width="match_parent"
@@ -53,6 +156,8 @@
             android:textSize="30dp"
             android:textColor="@color/white"
             android:layout_centerInParent="true"/>
+
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

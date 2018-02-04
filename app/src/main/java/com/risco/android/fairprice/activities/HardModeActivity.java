@@ -110,7 +110,6 @@ public class HardModeActivity extends AppCompatActivity {
         photoProgress=(ProgressBar)findViewById(R.id.progress_photo);
         productPhoto=(ImageView)findViewById(R.id.image_product);
         correctPhoto=(ImageView)findViewById(R.id.image_correct);
-        progressTime=(ProgressBar) findViewById(R.id.progress_time);
         livesText=findViewById(R.id.text_lives);
         incorrectPhoto=findViewById(R.id.image_no_correct);
         editText=findViewById(R.id.price_text);
