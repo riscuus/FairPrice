@@ -5,14 +5,34 @@ package com.risco.android.fairprice.models;
  */
 
 public class Question {
-    private String product, url;
-    private Long real_price, number;
+    private String product, url, image;
+    private Long realprice, number;
 
-    public Question(String product, String url, Long real_price, Long number) {
+    public Question(String product, String url, Long realprice, Long number, String image) {
         this.product = product;
         this.url = url;
-        this.real_price = real_price;
+        this.realprice = realprice;
         this.number = number;
+        this.image=image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "product='" + product + '\'' +
+                ", url='" + url + '\'' +
+                ", image='" + image + '\'' +
+                ", realprice=" + realprice +
+                ", number=" + number +
+                '}';
     }
 
     public Question(){}
@@ -25,8 +45,8 @@ public class Question {
         return url;
     }
 
-    public Long getReal_price() {
-        return real_price;
+    public Long getRealprice() {
+        return realprice;
     }
 
     public Long getNumber() {
@@ -41,21 +61,12 @@ public class Question {
         this.url = url;
     }
 
-    public void setReal_price(Long real_price) {
-        this.real_price = real_price;
+    public void setRealprice(Long realprice) {
+        this.realprice = realprice;
     }
 
     public void setNumber(Long number) {
         this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "product='" + product + '\'' +
-                ", url='" + url + '\'' +
-                ", real_price=" + real_price +
-                ", number=" + number +
-                '}';
-    }
 }

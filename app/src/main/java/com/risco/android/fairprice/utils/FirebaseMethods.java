@@ -6,7 +6,6 @@ import android.util.Log;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.risco.android.fairprice.models.Question;
 
 /**
@@ -43,8 +42,8 @@ public class FirebaseMethods {
                             ds.child(numString).getValue(Question.class).getNumber()
                     );
 
-                    question.setReal_price(
-                            ds.child(numString).getValue(Question.class).getReal_price()
+                    question.setRealprice(
+                            ds.child(numString).getValue(Question.class).getRealprice()
                     );
 
                     question.setProduct(
@@ -52,6 +51,9 @@ public class FirebaseMethods {
                     );
                     question.setUrl(
                             ds.child(numString).getValue(Question.class).getUrl()
+                    );
+                    question.setImage(
+                            ds.child(numString).getValue(Question.class).getImage()
                     );
 
                 }catch(NullPointerException ex){

@@ -114,13 +114,14 @@ public class HardModeActivity extends AppCompatActivity {
         incorrectPhoto=findViewById(R.id.image_no_correct);
         editText=findViewById(R.id.price_text);
         greatPhoto=findViewById(R.id.great_image);
+        progressTime=findViewById(R.id.progress_time);
 
     }
 
     private void setWidgets(Question question) {
         Log.d(TAG, "setWidgets: question: "+question.toString());
         try{
-            productRealPrice=question.getReal_price().intValue();
+            productRealPrice=question.getRealprice().intValue();
             productName.setText(question.getProduct());
             setImage(question);
         }catch(Exception ex){
@@ -130,7 +131,7 @@ public class HardModeActivity extends AppCompatActivity {
 
     }
     private void setImage(Question question){
-        UniversalImageLoader.setImage(question.getUrl(), productPhoto,photoProgress, "");
+        UniversalImageLoader.setImage(question.getImage(), productPhoto,photoProgress, "");
     }
     private void setHearts() {
         livesText.setText(String.valueOf(lives));

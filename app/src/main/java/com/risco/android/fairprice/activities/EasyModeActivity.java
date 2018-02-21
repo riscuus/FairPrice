@@ -80,7 +80,7 @@ public class EasyModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mode_normal_easy);
 
         mFirebaseMethods=new FirebaseMethods(mContext);
-        lives=4;
+        lives=20;
 
 
         initializeWidgets();
@@ -304,11 +304,11 @@ public class EasyModeActivity extends AppCompatActivity {
         Log.d(TAG, "setWidgets: question: "+question.toString());
         try{
             //setting global variable
-            productRealPrice=question.getReal_price().intValue();
+            productRealPrice=question.getRealprice().intValue();
 
             setImage(question);
-            ArrayList<Integer> randomPrices = setRandomPrices(question.getReal_price());
-            randomPrices.add(question.getReal_price().intValue());
+            ArrayList<Integer> randomPrices = setRandomPrices(question.getRealprice());
+            randomPrices.add(question.getRealprice().intValue());
 
             Collections.shuffle(randomPrices);
 
@@ -327,7 +327,7 @@ public class EasyModeActivity extends AppCompatActivity {
     }
 
     private void setImage(Question question){
-        UniversalImageLoader.setImage(question.getUrl(), productPhoto,photoProgress, "");
+        UniversalImageLoader.setImage(question.getImage(), productPhoto,photoProgress, "");
     }
 
     private ArrayList setRandomPrices(Long longReal){

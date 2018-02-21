@@ -87,14 +87,14 @@ public class ChallengeActivity extends AppCompatActivity {
         try {
             if(num==1){
                 productNameDown.setText(question.getProduct());
-                realPriceDown=question.getReal_price().intValue();
-                setImage(question.getUrl(),imageProductDown,progressDown);
+                realPriceDown=question.getRealprice().intValue();
+                setImage(question.getImage(),imageProductDown,progressDown);
             }
             else{
                 productNameUp.setText(question.getProduct());
-                realPriceUp=question.getReal_price().intValue();
+                realPriceUp=question.getRealprice().intValue();
                 realPriceUpTextView.setText(String.valueOf(realPriceUp)+"€");
-                setImage(question.getUrl(),imageProductUp,progressUp);
+                setImage(question.getImage(),imageProductUp,progressUp);
             }
         }catch(Exception ex){
             Log.e(TAG, "setWidgetsFirstTime:"+ex.getMessage());
@@ -105,8 +105,8 @@ public class ChallengeActivity extends AppCompatActivity {
     private void setWidgets(Question question){
         try {
             productNameDown.setText(question.getProduct());
-            realPriceDown=question.getReal_price().intValue();
-            setImage(question.getUrl(),imageProductDown,progressDown);
+            realPriceDown=question.getRealprice().intValue();
+            setImage(question.getImage(),imageProductDown,progressDown);
         }catch (Exception ex){
             Log.e(TAG, "setWidgets: "+ex.getMessage());
         }
